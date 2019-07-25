@@ -1,3 +1,5 @@
+#!/Library/Frameworks/Python.framework/Versions/2.7/bin/python
+
 # -*- coding: utf-8 -*-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -6,12 +8,13 @@
 #
 #   Print information about a given SOFA file
 #
-#   (C) Andrés Pérez-López - Eurecat / UPF
+#   (C) Andres Perez-Lopez - Eurecat / UPF
 #   24/08/2018
 #
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
 
 from pysofaconventions import *
+import sys
 
 def printLine():
     print("-----------------------------------------------------------------------\n")
@@ -19,10 +22,11 @@ def printLine():
 def printBlankLine():
     print("")
 
+path = sys.argv[1]
 
 # Set here your SOFA file path
 # path = "/Volumes/Dinge/SOFA/HRIR_measured_pp73_pos_0_0.sofa"
-path = "/Volumes/Dinge/SOFA/miro/sala1.sofa"
+# path = "/Volumes/Dinge/SOFA/miro/sala1.sofa"
 
 # Open the file for reading
 file = SOFAFile(path,"r")

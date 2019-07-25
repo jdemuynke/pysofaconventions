@@ -1,3 +1,5 @@
+#!/Library/Frameworks/Python.framework/Versions/2.7/bin/python
+
 # -*- coding: utf-8 -*-
 
 # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # # #
@@ -14,18 +16,15 @@
 from pysofaconventions import *
 import matplotlib.pyplot as plt
 import mpl_toolkits.mplot3d as plt3d
-
-from pysofaconventions.SOFAConvertCoordinates import *
-from pysofaconventions.SOFAConvertCoordinates import deg2rad
-#from pysofaconventions.SOFAConvertCoordinates import rad2deg
+import sys
 
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.view_init(45, -145)
 import numpy as np
 
-#path = sys.argv[1]
-path = '/Users/acustica/Work/BinauralStudio/SOFA/HRTFs/SOFA/SOFA_DATABASE/Ours/Deluxe_KU100.sofa'
+path = sys.argv[1]
+#path = '/Users/acustica/Development_projects/matlabsofapanner/Deluxe_KU1000_16384smp.SOFA'
 sofa = SOFAFile(path, "r")
 
 
@@ -57,7 +56,7 @@ print('Source Positions:\n')
 
 for i in range(nof_source_positions.size):
     print(str(i+1) + ': ' + str(sourcePositions_spherical[i, :]))
-    ax.scatter(x[i], y[i], z[i], zdir='z', s=20, c=(0, 0, 0))
+    ax.scatter(x[i], y[i], z[i], zdir='z', s=20, c=(0, 0, 0),  marker='.')
     ax.text(x[i], y[i], z[i]+0.1, str(i+1))
 
 receiverPosition_cartesian = SOFAConvertCoordinates(receiverPosition, SOFAReceiverPosition_Type[1], 'cartesian')
